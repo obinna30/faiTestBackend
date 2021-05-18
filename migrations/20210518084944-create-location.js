@@ -9,19 +9,19 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4,
       },
       START_LATITUDE: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
       },
       START_LONGITUDE: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
       },
       END_LATITUDE: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
       },
       END_LONGITUDE: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
       },
       DISTANCE: {
-        type: Sequelize.FLOAT
+        type: Sequelize.STRING
       },
       STATUS: {
         type: Sequelize.STRING,
