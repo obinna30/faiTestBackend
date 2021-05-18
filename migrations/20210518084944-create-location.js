@@ -24,7 +24,8 @@ module.exports = {
         type: Sequelize.FLOAT
       },
       STATUS: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: "UNASSIGNED",
       },
       createdAt: {
         allowNull: false,
