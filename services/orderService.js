@@ -1,6 +1,9 @@
 const db = require("../models");
 const { Location } = db;
-const { google } = require("googleapis");
+const axios = require("axios");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const orderService = {
   createOrder: async ({
     START_LATITUDE,
@@ -8,11 +11,21 @@ const orderService = {
     END_LATITUDE,
     END_LONGITUDE,
   }) => {
-    // const DISTANCE = google.maps.geometry.spherical.computeDistanceBetween(
-    //   new google.maps.LatLng(START_LATITUDE, START_LONGITUDE),
-    //   new google.maps.LatLng(END_LATITUDE, END_LONGITUDE)
-    // );
 
+    
+    const locationDistance = await axios
+      .get(
+        `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${START_LATITUDE},${START_LONGITUDE}&destinations=${END_LATITUDE},${END_LONGITUDE}&key=${process.env.GOOGLE_API_KEY}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        return res.data
+      })
+      .catch((err) => {
+        console.log("Error: ", err.message);
+      });
+
+      console.log("location",locationDistance);
     //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
     function calcCrow(lat1, lon1, lat2, lon2) {
       var R = 6371; // km
@@ -66,8 +79,8 @@ const orderService = {
       };
     }
   },
-  orderList: async ({limit, offset}) => {
-    const result = await Location.findAndCountAll({limit, offset});
+  orderList: async ({ limit, offset }) => {
+    const result = await Location.findAndCountAll({ limit, offset });
     return result;
   },
 };

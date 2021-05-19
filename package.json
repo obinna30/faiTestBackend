@@ -4,16 +4,20 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/orderTest.js",
     "start": "node server.js"
   },
   "author": "ekwealor obinna",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "googleapis": "39",
+    "mocha": "^8.4.0",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "path": "^0.12.7",

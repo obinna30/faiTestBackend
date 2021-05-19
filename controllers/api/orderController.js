@@ -62,9 +62,9 @@ const orderController = {
     }
   },
   orderList: async (req, res) => {
-    const page = parseInt(req.query.page); // Make sure to parse the limit to number
-    const limit= parseInt(req.query.limit); // Make sure to parse the limit to number
-    const offset = (page - 1) * limit; // Make sure to parse the skip to number
+    const page = parseInt(req.query.page); 
+    const limit= parseInt(req.query.limit); 
+    const offset = (page - 1) * limit; 
 
     console.log(page, limit, offset);
     try {
